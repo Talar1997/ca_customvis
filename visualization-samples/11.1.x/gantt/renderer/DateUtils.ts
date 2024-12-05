@@ -58,6 +58,13 @@ export default class DateUtils
             {
                 dateString = "20" + dateString;
             }
+
+            // Workaround for VIDA-7182. For german content language date contains comma instead of dot
+            if ( dateString.includes( "," ) )
+            {
+                dateString = dateString.replace( ",", "." );
+            }
+
             return new Date( dateString );
         }
 
